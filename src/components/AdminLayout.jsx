@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import { useAuth } from '../auth/useAuth'
 import { getCustomers } from '../data/store'
 import LogoutConfirmation from './LogoutConfirmation'
-
+import PocketKhata from '../assets/PocketKhata.png'
 const navigation = [
   { to: '/admin', label: 'Overview', icon: LayoutDashboard, end: true },
   { to: '/admin/users', label: 'Customers', icon: UsersRound },
@@ -66,7 +66,7 @@ export default function AdminLayout() {
     <div className="app-shell">
       <aside className={`sidebar ${menuOpen ? 'sidebar-open' : ''}`}>
         <NavLink to="/admin" className="brand-lockup" onClick={() => setMenuOpen(false)}>
-          <span className="brand-mark"><WalletCards size={21} /></span>
+          <span className="brand-mark"><img src={PocketKhata} alt="" /></span>
           <span>Pocket<span className="brand-accent">Khata</span><small>SMART LEDGER</small></span>
         </NavLink>
         <div className="side-label">WORKSPACE</div>

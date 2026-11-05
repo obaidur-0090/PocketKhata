@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
-import { ArrowLeft, ArrowRight, Eye, EyeOff, KeyRound, WalletCards } from 'lucide-react'
+import { ArrowLeft, Eye, EyeOff } from 'lucide-react'
 import { toast } from 'react-toastify'
 import { useAuth } from '../auth/useAuth'
 import PageTitle from '../components/PageTitle'
-
+import PocketKhata from '../assets/PocketKhata.png'
 export default function AdminLogin() {
   const [isSignup, setIsSignup] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
@@ -32,7 +32,7 @@ export default function AdminLogin() {
     setBusy(true)
     try {
       await adminPasswordReset(form.email)
-      toast.success('If an account exists for this email, password reset instructions have been sent.')
+      toast.success('Check your mail for changing password')
     } catch (error) {
       toast.error(error.message || 'Unable to send password reset email.')
     } finally {
@@ -56,15 +56,13 @@ export default function AdminLogin() {
   return (
     <div className="auth-page">
       <PageTitle title={isSignup ? 'Create admin account' : 'Admin sign in'} />
-      <Link to="/" className="auth-back"><ArrowLeft size={16} /> Back to home</Link>
+      <Link to="/" className="auth-back"><ArrowLeft size={25} /><span className="md:text-xl"> Back to home</span></Link>
       <div className="auth-card">
         <Link to="/" className="brand-lockup auth-brand">
-          <span className="brand-mark"><WalletCards size={21} /></span>
-          <span>Pocket<span className="brand-accent">Khata</span><small>SMART LEDGER</small></span>
+          <span className="brand-mark"><img src={PocketKhata} alt="" /></span>
+          <span>Pocket<span className="brand-accent">Khata</span></span>
         </Link>
-        <div className="auth-icon"><KeyRound size={20} /></div>
-        <span className="eyebrow">ADMIN PORTAL</span>
-        <h1>{isSignup ? 'Create your account' : 'Welcome back'}</h1>
+        <h1>{isSignup ? 'Create your account' : 'ADMIN PORTAL'}</h1>
         <p className="auth-description">{isSignup ? 'Set up an administrator account for your business.' : 'Sign in to manage your customer ledger.'}</p>
         {!firebaseConfigured && <div className="demo-notice">Demo mode is active. Configure Firebase to enable secure, shared admin accounts.</div>}
         {!isSignup && <>
@@ -77,10 +75,9 @@ export default function AdminLogin() {
           <label>Email address<input required type="email" autoComplete="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} placeholder="you@business.com" /></label>
           <label>Password<div className="password-wrap"><input aria-label="Password" required minLength={6} type={showPassword ? 'text' : 'password'} autoComplete={isSignup ? 'new-password' : 'current-password'} value={form.password} onChange={(event) => setForm({ ...form, password: event.target.value })} placeholder="At least 6 characters" /><button type="button" aria-label="Toggle visibility" onClick={() => setShowPassword((show) => !show)}>{showPassword ? <EyeOff size={17} /> : <Eye size={17} />}</button></div></label>
           {!isSignup && <button type="button" className="auth-forgot" disabled={busy} onClick={handlePasswordReset}>Forgot password?</button>}
-          <button type="submit" className="button button-primary auth-submit" disabled={busy}>{busy ? 'Please wait…' : isSignup ? 'Create admin account' : 'Sign in to dashboard'} <ArrowRight size={17} /></button>
+          <button type="submit" className="button button-primary auth-submit" disabled={busy}>{busy ? 'Please wait…' : isSignup ? 'Create admin account' : 'Sign in to dashboard'}</button>
         </form>
         <div className="auth-switch">{isSignup ? 'Already have an account?' : 'New to PocketKhata?'} <button type="button" onClick={() => setIsSignup((value) => !value)}>{isSignup ? 'Sign in' : 'Create an admin account'}</button></div>
-        <div className="auth-safe"><span /> Your data stays private and secure</div>
       </div>
     </div>
   )
