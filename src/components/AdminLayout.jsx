@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router'
-import { ArrowDownLeft, ArrowLeftRight, CircleHelp, Download, LayoutDashboard, LogOut, Menu, UsersRound} from 'lucide-react'
+import { ArrowLeftRight, Download, LayoutDashboard, LogOut, Menu, UsersRound} from 'lucide-react'
 import { toast } from 'react-toastify'
 import { useAuth } from '../auth/useAuth'
 import { getCustomers } from '../data/store'

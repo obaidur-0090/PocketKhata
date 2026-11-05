@@ -3,7 +3,7 @@
 :root {
   font-family: Inter, "Segoe UI", Arial, sans-serif;
   color: #252421;
-  background: #f8f7f5;
+  background: white;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -40,8 +40,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .heading-period { color: var(--red); }
 
 /* Landing */
-.landing-page { max-width: 1440px; margin: auto; padding: 0 7.1%; background: #fcfbf9; }
-.landing-nav { position: relative; height: 88px; display: flex; align-items: center; border-bottom: 1px solid #f0eeeb; gap: 32px; }
+.landing-page { max-width: 1440px; margin: auto; padding: 0 7.1%; background: white; }
+.landing-nav { position: relative; height: 88px; display: flex; align-items: center; border-bottom: 1px solid #f1afaf; gap: 32px; }
 .landing-nav .brand-lockup { flex: 0 0 auto; }
 .landing-nav-links { display: flex; align-items: center; gap: 34px; color: #77736e; font-size: 12px; font-weight: 550; }
 .landing-nav-links a { transition: color .18s; }
