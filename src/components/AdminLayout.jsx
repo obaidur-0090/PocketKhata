@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router'
-import { ArrowDownLeft, ArrowLeftRight, Bell, ChevronDown, CircleHelp, Download, LayoutDashboard, LogOut, Menu, UsersRound} from 'lucide-react'
+import { ArrowDownLeft, ArrowLeftRight, CircleHelp, Download, LayoutDashboard, LogOut, Menu, UsersRound} from 'lucide-react'
 import { toast } from 'react-toastify'
 import { useAuth } from '../auth/useAuth'
 import { getCustomers } from '../data/store'
@@ -67,9 +67,9 @@ export default function AdminLayout() {
       <aside className={`sidebar ${menuOpen ? 'sidebar-open' : ''}`}>
         <NavLink to="/admin" className="brand-lockup" onClick={() => setMenuOpen(false)}>
           <span className="brand-mark"><img src={PocketKhata} alt="" /></span>
-          <span>Pocket<span className="brand-accent">Khata</span><small>SMART LEDGER</small></span>
+          <span>Pocket<span className="brand-accent">Khata</span></span>
         </NavLink>
-        <div className="side-label">WORKSPACE</div>
+        
         <nav className="side-nav">
           {navigation.map(({ to, label, icon: Icon, end }) => (
             <NavLink key={to} to={to} end={end} onClick={() => setMenuOpen(false)} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
@@ -78,12 +78,9 @@ export default function AdminLayout() {
             </NavLink>
           ))}
         </nav>
-        <div className="sidebar-bottom">
+        <div className="sidebar-bottom hidden md:block">
           <div className="help-card">
-            <span className="help-icon"><CircleHelp size={17} /></span>
-            <strong>Need a hand?</strong>
-            <span>We’re here to help you.</span>
-            <button type="button" onClick={() => window.location.href = 'mailto:support@pocketkhata.app'}>Contact support <ArrowDownLeft size={14} /></button>
+            <h1 className="text-red-500">This apps make my "Obaidur Rahman"</h1>
           </div>
           <button type="button" className="profile-button" onClick={() => setLogoutOpen(true)}>
             <span className="avatar avatar-red">{(session?.name || 'A').slice(0, 1).toUpperCase()}</span>
@@ -96,12 +93,11 @@ export default function AdminLayout() {
       <main className="main-area">
         <header className="topbar">
           <button aria-label="Open menu" className="icon-button mobile-menu" onClick={() => setMenuOpen((open) => !open)}><Menu size={20} /></button>
-          <div className="breadcrumb"><span>Workspace</span><span className="crumb-slash">/</span><strong>{currentPage}</strong></div>
+          <div><strong>{currentPage}</strong></div>
           <div className="topbar-actions">
             <span className="today-label">{new Date().toLocaleDateString('en', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}</span>
             {session?.role === 'admin' && <button type="button" className="button button-subtle backup-button" onClick={downloadUserData} aria-label="Download userData.json backup" title="Download userData.json"><Download size={15} /><span>Backup data</span></button>}
-            <button className="icon-button notification-button" aria-label="Notifications"><Bell size={18} /><i /></button>
-            <button className="top-profile" aria-label="Sign out" onClick={() => setLogoutOpen(true)}><span className="avatar avatar-red">{(session?.name || 'A').slice(0, 1).toUpperCase()}</span><ChevronDown size={14} /></button>
+            
           </div>
         </header>
         <div className="content-area"><Outlet /></div>
