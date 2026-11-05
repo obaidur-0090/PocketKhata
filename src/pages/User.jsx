@@ -154,7 +154,6 @@ export default function User() {
           </tr>)}
         </tbody></table></div>
         {!filteredCustomers.length && <div className="empty-state"><Search size={22} /><strong>No customers found</strong><span>Try a different search or balance filter.</span></div>}
-        <div className="table-footer"><span>Showing <strong>{filteredCustomers.length}</strong> of <strong>{customers.length}</strong> customers</span><span>Data is saved in this browser</span></div>
       </section>
       {modal && <div className="modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && setModal(null)}><section className="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div className="modal-heading"><div><span className="eyebrow">{modal === 'transaction' || modal === 'edit-transaction' ? 'LEDGER UPDATE' : modal === 'create' ? 'NEW ACCOUNT' : 'CUSTOMER PROFILE'}</span><h2 id="modal-title">{modal === 'transaction' ? 'Record due or payment' : modal === 'edit-transaction' ? 'Edit transaction' : modal === 'create' ? 'Add a customer' : 'Edit customer'}</h2></div><button type="button" className="icon-button" aria-label="Close dialog" onClick={() => setModal(null)}><X size={19} /></button></div>

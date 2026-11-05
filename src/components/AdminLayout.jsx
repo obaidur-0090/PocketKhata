@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router'
-import { ArrowDownLeft, ArrowLeftRight, Bell, ChevronDown, CircleHelp, Download, LayoutDashboard, LogOut, Menu, Settings, UsersRound, WalletCards } from 'lucide-react'
+import { ArrowDownLeft, ArrowLeftRight, Bell, ChevronDown, CircleHelp, Download, LayoutDashboard, LogOut, Menu, UsersRound} from 'lucide-react'
 import { toast } from 'react-toastify'
 import { useAuth } from '../auth/useAuth'
 import { getCustomers } from '../data/store'
@@ -78,8 +78,6 @@ export default function AdminLayout() {
             </NavLink>
           ))}
         </nav>
-        <div className="side-label side-label-spaced">PREFERENCES</div>
-        <button className="nav-link" onClick={() => navigate('/admin/transactions')}><Settings size={18} strokeWidth={1.8} /><span>Settings</span></button>
         <div className="sidebar-bottom">
           <div className="help-card">
             <span className="help-icon"><CircleHelp size={17} /></span>
