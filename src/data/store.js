@@ -100,7 +100,6 @@ export function addTransaction(id, { type, amount, date }) {
   if (!date || Number.isNaN(Date.parse(`${date}T00:00:00`))) throw new Error('Choose a valid transaction date.')
   const customer = data.customers.find((entry) => entry.id === id)
   if (!customer) throw new Error('Customer not found.')
-  if (type === 'Payment' && value > customer.balance) throw new Error('Payment cannot be more than the current outstanding due.')
 
   data.customers = data.customers.map((customer) => {
     if (customer.id !== id) return customer
@@ -128,13 +127,11 @@ export function updateTransaction(customerId, transactionId, { type, amount, dat
   const previousImpact = transaction.type === 'Payment' ? -transaction.amount : transaction.amount
   const nextImpact = type === 'Payment' ? -value : value
   const balance = customer.balance + nextImpact - previousImpact
-  if (balance < -Number.EPSILON * Math.max(1, customer.balance, value, transaction.amount)) {
-    throw new Error('Payment cannot be more than the current outstanding due.')
-  }
+  const precision = Number.EPSILON * Math.max(1, Math.abs(customer.balance), value, transaction.amount)
 
   data.customers = data.customers.map((entry) => entry.id !== customerId ? entry : {
     ...entry,
-    balance: Math.max(0, balance),
+    balance: Math.abs(balance) <= precision ? 0 : balance,
     history: entry.history.map((item) => item.id === transactionId ? { ...item, type, amount: value, date } : item),
   })
   persist()

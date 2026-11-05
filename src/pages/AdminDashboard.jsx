@@ -13,7 +13,7 @@ const getSnapshot = () => getCustomers()
 
 export default function AdminDashboard() {
   const customers = useSyncExternalStore(subscribe, getSnapshot, getSnapshot)
-  const totalDue = customers.reduce((sum, customer) => sum + customer.balance, 0)
+  const totalDue = customers.reduce((sum, customer) => sum + Math.max(0, customer.balance), 0)
   const currentMonth = new Date().getMonth()
   const currentYear = new Date().getFullYear()
   const totalCollected = customers.reduce((sum, customer) => sum + customer.history.filter((item) => {
