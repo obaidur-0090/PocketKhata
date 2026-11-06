@@ -17,7 +17,7 @@ export default function NotFound() {
             <WalletCards size={21} />
           </span>
           <span className="text-lg font-bold tracking-tight">
-            Pocket<span className="text-[#d94b42]">Khata</span>
+            Pocket<span className="text-[#d94b42]">KhaTa</span>
           </span>
         </Link>
 

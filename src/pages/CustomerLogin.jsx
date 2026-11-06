@@ -27,7 +27,7 @@ export default function CustomerLogin() {
       <PageTitle title="Customer login" />
       <Link to="/" className="auth-back"><ArrowLeft size={25} /><span className="md:text-xl">Back to home</span></Link>
       <div className="auth-card">
-        <Link to="/" className="brand-lockup auth-brand"><span className="brand-mark "><img src={PocketKhata} alt="" /></span><span>Pocket<span className="brand-accent">Khata</span></span></Link>
+        <Link to="/" className="brand-lockup auth-brand"><span className="brand-mark "><img src={PocketKhata} alt="" /></span><span className='text-2xl'>Pocket<span className="brand-accent">KhaTa</span></span></Link>
         <h1>CUSTOMER PORTAL</h1>
         <p className="auth-description">Enter the private access key shared by your shop to view your account.</p>
         <form className="auth-form" onSubmit={unlock}>

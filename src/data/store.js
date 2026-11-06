@@ -1,4 +1,5 @@
 const STORAGE_KEY = 'pocketkhata-data-v1'
+const DEFAULT_SHOP_NAME = 'PocketKhata Shop'
 
 const initialCustomers = [
   { id: 'pk-1001', name: 'Ayesha Rahman', phone: '+880 1712-345678', location: 'Dhanmondi, Dhaka', balance: 12500, accessKey: '24816357', history: [{ id: 't-1', type: 'Due added', amount: 15000, date: '2026-10-12' }, { id: 't-2', type: 'Payment', amount: 2500, date: '2026-10-18' }] },
@@ -23,6 +24,9 @@ function readData() {
         const migratedData = {
           ...parsed,
           customers,
+          shopName: typeof parsed.shopName === 'string' && parsed.shopName.trim()
+            ? parsed.shopName.trim()
+            : DEFAULT_SHOP_NAME,
         }
         if (parsed.customers.some((customer) => customer && Object.hasOwn(customer, 'email'))) {
           try {
@@ -37,7 +41,7 @@ function readData() {
   } catch (error) {
     console.error('Unable to read PocketKhata data from local storage.', error)
   }
-  return { customers: initialCustomers }
+  return { customers: initialCustomers, shopName: DEFAULT_SHOP_NAME }
 }
 
 let data = readData()
@@ -60,6 +64,23 @@ export function getCustomers() {
 export function subscribeCustomers(listener) {
   listeners.add(listener)
   return () => listeners.delete(listener)
+}
+
+export function getShopName() {
+  return data.shopName
+}
+
+export function subscribeShopName(listener) {
+  listeners.add(listener)
+  return () => listeners.delete(listener)
+}
+
+export function updateShopName(name) {
+  const shopName = name.trim()
+  if (!shopName) throw new Error('Enter a shop name.')
+  if (shopName.length > 80) throw new Error('Shop name must be 80 characters or fewer.')
+  data = { ...data, shopName }
+  persist()
 }
 
 export function createCustomer(input) {

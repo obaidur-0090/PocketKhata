@@ -9,6 +9,7 @@ import CustomerLogin from './pages/CustomerLogin'
 import CustomerPortal from './pages/CustomerPortal'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
+import ProfileSettings from './pages/ProfileSettings'
 import Transactions from './pages/Transactions'
 import User from './pages/User'
 
@@ -25,6 +26,7 @@ export default function App() {
               <Route index element={<AdminDashboard />} />
               <Route path="users" element={<User />} />
               <Route path="transactions" element={<Transactions />} />
+              <Route path="profile" element={<ProfileSettings />} />
             </Route>
           </Route>
           <Route element={<ProtectedRoute role="customer" />}>

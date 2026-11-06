@@ -13,10 +13,10 @@ export default function Navber() {
     <header className="landing-nav">
       <Link to="/" className="brand-lockup" onClick={closeMenu}>
         <img className="md:w-[70px] w-[50px]" src={PocketKhata} alt="" />
-        <span>Pocket<span className="brand-accent">Khata</span></span>
+        <span className='text-2xl'>Pocket<span className="brand-accent">KhaTa</span></span>
       </Link>
 
-      <nav className="landing-nav-links ml-80" aria-label="Main navigation">
+      <nav className="landing-nav-links" aria-label="Main navigation">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>
       </nav>

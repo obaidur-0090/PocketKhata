@@ -1,15 +1,25 @@
-import { useMemo, useState, useSyncExternalStore } from 'react'
+import { useCallback, useMemo, useState, useSyncExternalStore } from 'react'
 import { BangladeshiTaka, Search } from 'lucide-react'
 import PageTitle from '../components/PageTitle'
 import { TransactionTable } from './AdminDashboard'
-import { getCustomers, subscribeCustomers } from '../data/store'
+import { getCustomers, getShopName, subscribeCustomers, subscribeShopName } from '../data/store'
+import { TypeAnimation } from 'react-type-animation'
 
 const subscribe = (notify) => subscribeCustomers(notify)
 const getSnapshot = () => getCustomers()
+const subscribeShop = (notify) => subscribeShopName(notify)
+const getShopSnapshot = () => getShopName()
 
 export default function Transactions() {
   const customers = useSyncExternalStore(subscribe, getSnapshot, getSnapshot)
+  const shopName = useSyncExternalStore(subscribeShop, getShopSnapshot, getShopSnapshot)
   const [search, setSearch] = useState('')
+  const [shopNameRed, setShopNameRed] = useState(false)
+  const toggleShopNameColor = useCallback(() => setShopNameRed((isRed) => !isRed), [])
+  const shopNameSequence = useMemo(
+    () => [shopName, 1000, '', toggleShopNameColor, 500],
+    [shopName, toggleShopNameColor],
+  )
   const transactions = useMemo(() => customers.flatMap((customer) => customer.history.map((item) => ({ ...item, customerName: customer.name, customerPhoto: customer.photo, customerId: customer.id }))).sort((a, b) => b.date.localeCompare(a.date)).filter((item) => !search || item.customerName.toLowerCase().includes(search.toLowerCase()) || item.type.toLowerCase().includes(search.toLowerCase())), [customers, search])
   const collected = transactions.filter((item) => item.type === 'Payment').reduce((sum, item) => sum + item.amount, 0)
   const dues = transactions.filter((item) => item.type !== 'Payment').reduce((sum, item) => sum + item.amount, 0)
@@ -17,7 +27,23 @@ export default function Transactions() {
   return (
     <>
       <PageTitle title="Transactions" />
-      <div className="page-heading"><div><span className="eyebrow">LEDGER ACTIVITY</span><h1>Transactions<span className="heading-period">.</span></h1><p>A clear record of every payment and due added.</p></div></div>
+      <div className="page-heading">
+        <div>
+          <h1
+            className="dashboard-shop-name"
+            style={{ color: shopNameRed ? 'var(--red)' : 'var(--ink)' }}
+          >
+            <TypeAnimation
+              sequence={shopNameSequence}
+              speed={50}
+              deletionSpeed={60}
+              repeat={Infinity}
+              cursor
+            />
+          </h1>
+          <h1>Transactions<span className="heading-period">.</span></h1>
+        </div>
+      </div>
       <div className="transaction-summary">
         <div className="transaction-summary-card"><span className="summary-icon summary-green"><BangladeshiTaka /></span><span><small>Total payments recorded</small><strong>৳{collected.toLocaleString('en-BD')}</strong></span></div>
         <div className="transaction-summary-card"><span className="summary-icon summary-red"><BangladeshiTaka /></span><span><small>Total dues recorded</small><strong>৳{dues.toLocaleString('en-BD')}</strong></span></div>

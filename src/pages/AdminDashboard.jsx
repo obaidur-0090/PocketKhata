@@ -1,18 +1,28 @@
-import { useSyncExternalStore } from 'react'
+import { useCallback, useMemo, useState, useSyncExternalStore } from 'react'
 import { Link } from 'react-router'
 import { BangladeshiTaka, Plus, UsersRound, Wallet } from 'lucide-react'
 import PageTitle from '../components/PageTitle'
-import { getCustomers, subscribeCustomers } from '../data/store'
+import { getCustomers, getShopName, subscribeCustomers, subscribeShopName } from '../data/store'
 import { lazy, Suspense } from 'react'
+import { TypeAnimation } from 'react-type-animation';
 
 const RectRecharts = lazy(() => import('./RectRecharts'))
 
 const money = (value) => `৳${Number(value).toLocaleString('en-BD')}`
 const subscribe = (notify) => subscribeCustomers(notify)
 const getSnapshot = () => getCustomers()
+const subscribeShop = (notify) => subscribeShopName(notify)
+const getShopSnapshot = () => getShopName()
 
 export default function AdminDashboard() {
   const customers = useSyncExternalStore(subscribe, getSnapshot, getSnapshot)
+  const shopName = useSyncExternalStore(subscribeShop, getShopSnapshot, getShopSnapshot)
+  const [shopNameRed, setShopNameRed] = useState(false)
+  const toggleShopNameColor = useCallback(() => setShopNameRed((isRed) => !isRed), [])
+  const shopNameSequence = useMemo(
+    () => [shopName, 1000, '', toggleShopNameColor, 500],
+    [shopName, toggleShopNameColor],
+  )
   const totalDue = customers.reduce((sum, customer) => sum + Math.max(0, customer.balance), 0)
   const currentMonth = new Date().getMonth()
   const currentYear = new Date().getFullYear()
@@ -21,13 +31,27 @@ export default function AdminDashboard() {
     return item.type === 'Payment' && date.getMonth() === currentMonth && date.getFullYear() === currentYear
   }).reduce((value, item) => value + item.amount, 0), 0)
   const transactions = customers.flatMap((customer) => customer.history.map((item) => ({ ...item, customerName: customer.name, customerPhoto: customer.photo, customerId: customer.id }))).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5)
-  const todayLabel = new Date().toLocaleDateString('en', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).toUpperCase()
+
 
   return (
     <>
       <PageTitle title="Overview" />
       <div className="page-heading">
-        <div><span className="eyebrow">{todayLabel}</span><h1 className="font-bold">Dash<span className="text-red-600">Board</span></h1><p>Here’s what’s happening with your business today.</p></div>
+        <div>
+          <h1
+            className="dashboard-shop-name"
+            style={{ color: shopNameRed ? 'var(--red)' : 'var(--ink)' }}
+          >
+            <TypeAnimation
+              sequence={shopNameSequence}
+              speed={50}
+              deletionSpeed={60}
+              repeat={Infinity}
+              cursor={true}
+            />
+          </h1>
+          <h1 className="font-bold">Dash<span className="text-red-600">Board</span></h1>
+        </div>
         <Link to="/admin/users" className="button button-primary"><Plus size={17} /> Add customer</Link>
       </div>
       <section className="stats-grid">
@@ -49,7 +73,7 @@ export default function AdminDashboard() {
       </section>
       <section className="dashboard-grid">
         <Suspense fallback={<div className="panel chart-panel chart-loading">Loading chart…</div>}><RectRecharts customers={customers} /></Suspense>
-      
+
       </section>
       <section className="panel activity-panel">
         <div className="panel-heading activity-heading"><div><h2 className="md:text-2xl">Recent transactions</h2></div><Link className="text-link" to="/admin/transactions">View all</Link></div>

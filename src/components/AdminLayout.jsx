@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router'
-import { ArrowLeftRight, Download, LayoutDashboard, LogOut, Menu, UsersRound} from 'lucide-react'
+import { ArrowLeftRight, Download, LayoutDashboard, LogOut, Menu, Settings, UsersRound } from 'lucide-react'
 import { toast } from 'react-toastify'
 import { useAuth } from '../auth/useAuth'
 import { getCustomers } from '../data/store'
@@ -10,6 +10,7 @@ const navigation = [
   { to: '/admin', label: 'Overview', icon: LayoutDashboard, end: true },
   { to: '/admin/users', label: 'Customers', icon: UsersRound },
   { to: '/admin/transactions', label: 'Transactions', icon: ArrowLeftRight },
+  { to: '/admin/profile', label: 'Profile settings', icon: Settings },
 ]
 
 export default function AdminLayout() {
@@ -19,7 +20,13 @@ export default function AdminLayout() {
   const { session, logout } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
-  const currentPage = location.pathname.endsWith('/users') ? 'Customers' : location.pathname.endsWith('/transactions') ? 'Transactions' : 'Overview'
+  const currentPage = location.pathname.endsWith('/users')
+    ? 'Customers'
+    : location.pathname.endsWith('/transactions')
+      ? 'Transactions'
+      : location.pathname.endsWith('/profile')
+        ? 'Profile settings'
+        : 'Overview'
 
   async function handleLogout() {
     setLoggingOut(true)
@@ -67,14 +74,13 @@ export default function AdminLayout() {
       <aside className={`sidebar ${menuOpen ? 'sidebar-open' : ''}`}>
         <NavLink to="/admin" className="brand-lockup" onClick={() => setMenuOpen(false)}>
           <span className="brand-mark"><img src={PocketKhata} alt="" /></span>
-          <span>Pocket<span className="brand-accent">Khata</span></span>
+          <span className='text-2xl'>Pocket<span className="brand-accent">KhaTa</span></span>
         </NavLink>
         
         <nav className="side-nav">
           {navigation.map(({ to, label, icon: Icon, end }) => (
             <NavLink key={to} to={to} end={end} onClick={() => setMenuOpen(false)} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              <Icon size={18} strokeWidth={1.8} /> <span>{label}</span>
-              {label === 'Customers' && <span className="nav-count">{' '}</span>}
+              <Icon size={20} strokeWidth={1.8} /> <span>{label}</span>
             </NavLink>
           ))}
         </nav>
