@@ -241,7 +241,7 @@ select:focus-visible {
 }
 
 .landing-menu-toggle {
-  min-height: 38px;
+  min-height: 28px;
   padding: 0 11px;
   font-size: 12px;
 }
@@ -927,7 +927,7 @@ select:focus-visible {
   border: 0;
   color: var(--red);
   font-weight: 700;
-  font-size: 10px;
+  font-size: 12px;
   padding: 0 0 0 3px;
 }
 
@@ -1416,6 +1416,13 @@ select:focus-visible {
   border: 1px solid #eeece9;
   border-radius: 11px;
   padding: 16px 17px;
+  transition: transform 0.4s ease-in-out;
+  transform: scale(1);
+}
+.stat-card:hover {
+  background: #FFF0EE;
+  transform: scale(1.04);
+  
 }
 
 .stat-top {
@@ -1743,7 +1750,7 @@ select:focus-visible {
 
 .data-table th {
   padding: 10px 15px;
-  color: #a7a29b;
+  color: black;
   font-weight: 750;
   font-size: 8px;
   letter-spacing: .7px;
@@ -1760,6 +1767,7 @@ select:focus-visible {
 
 .data-table tbody tr:hover {
   background: #FFF0EE;
+  
 }
 
 .table-primary {

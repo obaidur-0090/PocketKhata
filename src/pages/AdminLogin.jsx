@@ -60,7 +60,7 @@ export default function AdminLogin() {
       <div className="auth-card">
         <Link to="/" className="brand-lockup auth-brand">
           <span className="brand-mark"><img src={PocketKhata} alt="" /></span>
-          <span>Pocket<span className="brand-accent">KhaTa</span></span>
+          <span className="text-2xl">Pocket<span className="brand-accent">KhaTa</span></span>
         </Link>
         <h1>{isSignup ? 'Create your account' : 'ADMIN PORTAL'}</h1>
         <p className="auth-description">{isSignup ? 'Set up an administrator account for your business.' : 'Sign in to manage your customer ledger.'}</p>

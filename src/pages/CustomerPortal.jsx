@@ -1,6 +1,6 @@
 import { useMemo, useState, useSyncExternalStore } from 'react'
 import { useNavigate } from 'react-router'
-import { BangladeshiTaka, BangladeshiTakaIcon, CircleHelp, LogOut, ShieldCheck } from 'lucide-react'
+import { BangladeshiTaka, BangladeshiTakaIcon, CircleHelp, LogOut } from 'lucide-react'
 import { toast } from 'react-toastify'
 import { useAuth } from '../auth/useAuth'
 import LogoutConfirmation from '../components/LogoutConfirmation'
