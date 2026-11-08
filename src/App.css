@@ -1547,6 +1547,7 @@ select:focus-visible {
   justify-content: space-between;
   align-items: center;
   gap: 14px;
+  
 }
 
 .panel-heading h2 {
@@ -1557,7 +1558,7 @@ select:focus-visible {
 
 .panel-heading select {
   appearance: none;
-  background: #fff;
+  background: #FCE4E8;
   border: 1px solid #ece9e6;
   border-radius: 7px;
   padding: 7px 25px 7px 9px;
@@ -2678,7 +2679,7 @@ select:focus-visible {
   color: #000;
   border-radius: 16px;
   padding: 30px 32px 20px;
-  background: #f1c3bd;
+  background: #FCE4E8;
   box-shadow: 0 8px 18px #dd493c24;
 }
 
@@ -2747,7 +2748,6 @@ select:focus-visible {
 }
 
 .customer-mini-stats>div {
-  background: white;
   border: 1px solid #eeece9;
   border-radius: 12px;
   padding: 18px;
