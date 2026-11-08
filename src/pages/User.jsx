@@ -165,10 +165,11 @@ export default function User() {
         <div><h1 className=" font-bold">Custo<span className="text-red-600">Mers</span></h1></div>
         <button type="button" className="button button-primary" onClick={openCreate}><Plus size={17} /> Add customer</button>
       </div>
+
       <section className="user-summary-grid">
-        <div className="user-summary-card"><span className="summary-icon summary-red"><UsersRound size={18} /></span><div><small>Total customers</small><strong>{String(customers.length).padStart(2, '0')}</strong></div></div>
-        <div className="user-summary-card"><span className="summary-icon summary-orange"><BangladeshiTaka /></span><div><small>Total Due</small><strong>{money(totalDue)}</strong></div></div>
-        <div className="user-summary-card"><span className="summary-icon summary-green"><BangladeshiTaka /></span><div><small>Total customer credit</small><strong>{money(totalCredit)}</strong></div></div>
+        <div className="user-summary-card bg-[#FFF8D6]"><span className="summary-icon summary-red"><UsersRound size={18} /></span><div><small>Total customers</small><strong>{String(customers.length).padStart(2, '0')}</strong></div></div>
+        <div className="user-summary-card bg-[#DCE8F9]"><span className="summary-icon summary-orange"><BangladeshiTaka /></span><div><small>Total Due</small><strong>{money(totalDue)}</strong></div></div>
+        <div className="user-summary-card bg-[#F5E6FC]"><span className="summary-icon summary-green"><BangladeshiTaka /></span><div><small>Total customer credit</small><strong>{money(totalCredit)}</strong></div></div>
       </section>
       <section className="panel directory-panel">
         <div className="directory-toolbar">

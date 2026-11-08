@@ -55,17 +55,17 @@ export default function AdminDashboard() {
         <Link to="/admin/users" className="button button-primary"><Plus size={17} /> Add customer</Link>
       </div>
       <section className="stats-grid">
-        <article className="stat-card">
+        <article className="stat-card bg-[#FFF8D6]">
           <div className="stat-top"><span className="stat-icon red-tint"><Wallet size={19} /></span><span className="font-bold">Total due</span></div>
           <strong className="stat-value">{money(totalDue)}</strong>
           <span className="stat-decoration decoration-red"></span>
         </article>
-        <article className="stat-card">
+        <article className="stat-card bg-[#DCE8F9]">
           <div className="stat-top"><span className="stat-icon green-tint"><BangladeshiTaka /></span><span className="font-bold">Collected this month</span></div>
           <strong className="stat-value">{money(totalCollected)}</strong>
           <span className="stat-decoration decoration-green"></span>
         </article>
-        <article className="stat-card">
+        <article className="stat-card bg-[#F5E6FC]">
           <div className="stat-top"><span className="stat-icon blue-tint"><UsersRound size={19} /></span><span className="font-bold">All Time Total customers</span></div>
           <strong className="stat-value">{String(customers.length).padStart(2, '0')}</strong>
           <span className="stat-decoration decoration-blue"></span>
@@ -86,7 +86,7 @@ export default function AdminDashboard() {
 export function TransactionTable({ transactions }) {
   if (!transactions.length) return <div className="empty-state">No transactions yet. Add a customer or record a payment to get started.</div>
   return (
-    <div className="table-scroll"><table className="data-table"><thead><tr><th>CUSTOMER</th><th>DATE</th><th>TYPE</th><th className="align-right">AMOUNT</th></tr></thead><tbody>
+    <div className="table-scroll bg"><table className="data-table"><thead><tr><th>CUSTOMER</th><th>DATE</th><th>TYPE</th><th className="align-right">AMOUNT</th></tr></thead><tbody>
       {transactions.map((item) => <tr key={item.id}><td><div className="customer-cell transaction-customer-cell"><span className={`avatar customer-avatar avatar-${item.customerId?.length % 4 || 0}`}>{item.customerPhoto ? <img src={item.customerPhoto} alt={`${item.customerName} profile`} /> : item.customerName.split(' ').map((part) => part[0]).slice(0, 2).join('')}</span><span><strong className="table-primary">{item.customerName}</strong><small className="table-secondary">Customer</small></span></div></td><td className="table-muted">{new Date(`${item.date}T00:00:00`).toLocaleDateString('en', { day: 'numeric', month: 'short', year: 'numeric' })}</td><td><span className={`type-pill ${item.type === 'Payment' ? 'paid-pill' : 'due-pill'}`}>{item.type === 'Payment' ? 'Payment' : 'Due added'}</span></td><td className={`align-right amount-cell ${item.type === 'Payment' ? 'amount-paid' : ''}`}>{item.type === 'Payment' ? '− ' : '+ '}{money(item.amount)}</td></tr>)}
     </tbody></table></div>
   )

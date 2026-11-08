@@ -1412,7 +1412,7 @@ select:focus-visible {
   min-height: 157px;
   position: relative;
   overflow: hidden;
-  background: #fff;
+  
   border: 1px solid #eeece9;
   border-radius: 11px;
   padding: 16px 17px;
@@ -1420,7 +1420,7 @@ select:focus-visible {
   transform: scale(1);
 }
 .stat-card:hover {
-  background: #FFF0EE;
+
   transform: scale(1.04);
   
 }
@@ -1745,7 +1745,7 @@ select:focus-visible {
 }
 
 .data-table thead {
-  background: #fcfbfa;
+  background: #fffdfb;
 }
 
 .data-table th {
@@ -2008,7 +2008,6 @@ select:focus-visible {
 }
 
 .user-summary-card {
-  background: white;
   border: 1px solid #eeece9;
   border-radius: 10px;
   min-height: 78px;
@@ -2048,8 +2047,8 @@ select:focus-visible {
 }
 
 .user-summary-card small {
-  color: #918c85;
-  font-size: 9px;
+  color: black;
+  font-size: 12px;
 }
 
 .user-summary-card strong {
@@ -3456,6 +3455,7 @@ select:focus-visible {
 
   .stat-card {
     min-height: 132px;
+    
   }
 
   .stat-label {
