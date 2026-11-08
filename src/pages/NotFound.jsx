@@ -12,7 +12,7 @@ export default function NotFound() {
       <div aria-hidden="true" className="pointer-events-none absolute -bottom-28 -right-20 h-72 w-72 rounded-full bg-[#f3e8d8] opacity-70 blur-3xl sm:h-96 sm:w-96" />
 
       <section className="relative w-full max-w-xl rounded-3xl border border-[#eeece9] bg-white/90 px-6 py-10 text-center shadow-[0_24px_80px_rgba(55,43,35,0.08)] backdrop-blur sm:px-12 sm:py-14">
-        <Link to="/" aria-label="PocketKhata home" className="mx-auto mb-10 inline-flex items-center gap-2.5 rounded-xl text-left sm:mb-12">
+        <Link to="/" className="mx-auto mb-10 inline-flex items-center gap-2.5 rounded-xl text-left sm:mb-12">
           <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#fff0ee] text-[#d94b42]">
             <WalletCards size={21} />
           </span>

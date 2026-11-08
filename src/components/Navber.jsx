@@ -16,7 +16,7 @@ export default function Navber() {
         <span className='text-2xl'>Pocket<span className="brand-accent">KhaTa</span></span>
       </Link>
 
-      <nav className="landing-nav-links" aria-label="Main navigation">
+      <nav className="landing-nav-links">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>
       </nav>
@@ -33,7 +33,6 @@ export default function Navber() {
           onClick={() => setMenuOpen((open) => !open)}
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
-          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
         >
           {menuOpen ? 'Close' : 'Menu'}
           {menuOpen ? <X size={17} /> : <Menu size={17} />}

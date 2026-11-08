@@ -73,7 +73,7 @@ select:focus-visible {
   color: white;
   border-radius: 12px;
   background: white;
-  
+
 }
 
 .brand-accent,
@@ -1077,7 +1077,7 @@ select:focus-visible {
 .nav-link:hover {
   background: #FFF0EE;
   color: #d8453c;
-  
+
 }
 
 .nav-link.active {
@@ -1334,7 +1334,7 @@ select:focus-visible {
   font-weight: bold;
   font-size: 18px;
   overflow-wrap: anywhere;
-  
+
 }
 
 .profile-settings-card {
@@ -1412,17 +1412,18 @@ select:focus-visible {
   min-height: 157px;
   position: relative;
   overflow: hidden;
-  
+
   border: 1px solid #eeece9;
   border-radius: 11px;
   padding: 16px 17px;
   transition: transform 0.4s ease-in-out;
   transform: scale(1);
 }
+
 .stat-card:hover {
 
   transform: scale(1.04);
-  
+
 }
 
 .stat-top {
@@ -1547,7 +1548,7 @@ select:focus-visible {
   justify-content: space-between;
   align-items: center;
   gap: 14px;
-  
+
 }
 
 .panel-heading h2 {
@@ -1768,7 +1769,7 @@ select:focus-visible {
 
 .data-table tbody tr:hover {
   background: #FFF0EE;
-  
+
 }
 
 .table-primary {
@@ -2553,7 +2554,6 @@ select:focus-visible {
   gap: 11px;
   min-height: 76px;
   padding: 13px 15px;
-  background: white;
   border: 1px solid #eeece9;
   border-radius: 10px;
 }
@@ -2676,118 +2676,192 @@ select:focus-visible {
 }
 
 .customer-balance-card {
-  color: #000;
-  border-radius: 16px;
-  padding: 30px 32px 20px;
-  background: #FCE4E8;
-  box-shadow: 0 8px 18px #dd493c24;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 270px;
+  color: #fff;
+  border: 1px solid #ffffff1a;
+  border-radius: 22px;
+  padding: 30px 32px 22px;
+  background: linear-gradient(135deg, #123c32 0%, #145b45 58%, #1c7555 100%);
+  box-shadow: 0 18px 36px #13543b2b;
+}
+
+
+
+.customer-balance-card::before {
+  width: 280px;
+  height: 280px;
+  right: -88px;
+  top: -148px;
+}
+
+.customer-balance-card::after {
+  width: 220px;
+  height: 220px;
+  right: -58px;
+  top: -118px;
+}
+
+.customer-overview-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+  gap: 20px;
+  align-items: stretch;
 }
 
 .customer-credit-card {
-  background: linear-gradient(114deg, #edf8f1 0%, #d7eee0 59%, #c3e6d1 100%);
-  box-shadow: 0 8px 18px #32886624;
+  background: linear-gradient(135deg, #174b3a 0%, #26714f 58%, #398960 100%);
 }
 
 .balance-card-top {
+  position: relative;
+  z-index: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 16px;
+}
+
+.balance-card-copy {
+  min-width: 0;
+  display: grid;
+  justify-items: start;
+  gap: 9px;
+}
+
+.balance-card-eyebrow {
+  color: #c5e7d4;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 1.7px;
 }
 
 .balance-card-label {
-  color: #000;
-  font-size: 21px;
-  font-weight: 750;
-  letter-spacing: 1.15px;
+  color: #ffffffd9;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .big-balance {
-  font-size: clamp(42px, 5vw, 58px);
-  letter-spacing: -1.8px;
-  font-weight: 750;
-  margin-top: 6px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: clamp(38px, 4vw, 54px);
+  letter-spacing: -1.7px;
+  font-weight: 760;
+  line-height: 1.1;
+  margin-top: 3px;
 }
 
 .balance-card-icon {
   display: grid;
   place-items: center;
-  width: 54px;
-  height: 54px;
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
+  color: #d7f0e2;
+  border: 1px solid #ffffff25;
+  border-radius: 15px;
+  background: #ffffff12;
 }
 
 .balance-card-bottom {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #00000020;
-  padding-top: 16px;
-  margin-top: 22px;
-  color: #000;
-  font-size: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid #ffffff24;
+  padding-top: 15px;
+  margin-top: 24px;
+  color: #d7e9df;
+  font-size: 12px;
 }
 
 .balance-card-bottom>span:first-child {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 9px;
 }
 
 .balance-status-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: #b7efbd;
-  box-shadow: 0 0 0 3px #ffffff20;
+  background: #8be0a4;
+  box-shadow: 0 0 0 4px #8be0a426;
 }
 
 .customer-mini-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin: 18px 0 22px;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 11px;
+  margin: 0 0 22px;
 }
 
 .customer-mini-stats>div {
-  border: 1px solid #eeece9;
-  border-radius: 12px;
-  padding: 18px;
+  min-width: 0;
+  border: 1px solid #e9eee9;
+  border-radius: 16px;
+  padding: 15px 18px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+
+  box-shadow: 0 5px 16px #163d2710;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.customer-mini-stats>div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 22px #163d2718;
 }
 
 .mini-stat-icon {
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  color: #d94b42;
-  background: #fff0ee;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  color: #24804f;
+  background: #e8f5ed;
 }
 
 .mini-stat-green {
-  color: #328766;
-  background: #eaf5ef;
+  color: #4a70b5;
+  background: #edf2fb;
 }
 
 .mini-stat-blue {
-  color: #617fb1;
-  background: #eff3fb;
+  color: #8853a8;
+  background: #f5eef9;
 }
 
 .customer-mini-stats>div>span:last-child {
   display: grid;
-  gap: 4px;
+  min-width: 0;
+  gap: 3px;
+  color: #68766d;
+  font-size: 12px;
 }
 
 .customer-mini-stats small {
-  color: #000;
-  font-size: 13px;
+  color: #68766d;
+  font-size: 12px;
 }
 
 .customer-mini-stats strong {
-  font-size: 21px;
+  overflow-wrap: anywhere;
+  color: #17251d;
+  font-size: 19px;
+  font-weight: 750;
 }
 
 .customer-dashboard-grid {
@@ -2879,95 +2953,88 @@ select:focus-visible {
 
 .payment-methods {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
 .payment-method {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: grid;
+  place-items: center;
   min-width: 0;
-  padding: 12px;
-  text-align: left;
+  min-height: 112px;
+  padding: 10px;
   border: 1px solid #eeece9;
   background: white;
   border-radius: 8px;
+  cursor: pointer;
 }
 
-.payment-method:hover {
+.payment-method:hover,
+.payment-method:focus-visible {
   border-color: #e3c2bd;
   background: #fffdfc;
 }
 
-.payment-method>span:nth-child(2) {
-  flex: 1;
-  min-width: 0;
-}
-
-.payment-method strong,
-.payment-method small {
+.payment-method img {
   display: block;
+  width: 100%;
+  height: 82px;
+  object-fit: contain;
+  transition: transform 180ms ease;
 }
 
-.payment-method strong {
-  font-size: 15px;
+.payment-method:hover img,
+.payment-method:focus-visible img {
+  transform: scale(1.08);
 }
 
-.payment-method small {
-  color: #000;
-  font-size: 12px;
-  margin-top: 3px;
-}
-
-.payment-logo {
+.payment-send-money {
   display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  text-transform: uppercase;
-  font-weight: 800;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
-.bkash {
-  color: #d52d76;
-  background: #fff0f6;
-}
-
-.nagad {
-  color: #e56235;
-  background: #fff3e9;
-}
-
-.rocket {
-  color: #843e93;
-  background: #f5eef8;
-}
-
-.dbbl {
-  color: #32946e;
-  background: #ebf7f1;
-}
-
-.payment-note {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 13px;
-  background: #faf8f6;
+  gap: 4px;
+  margin-top: 16px;
+  text-align: center;
   color: #000;
-  font-size: 13px;
-  line-height: 1.55;
-  border-radius: 7px;
-  margin-top: 11px;
 }
 
-.payment-note svg {
-  flex: 0 0 auto;
-  color: #b2875d;
+.payment-send-money strong {
+  font-size: 17px;
+  font-weight: 750;
+}
+
+.payment-send-money a {
+  color: #000;
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.payment-send-money a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .payment-methods {
+    gap: 8px;
+  }
+
+  .payment-method {
+    min-height: 96px;
+    padding: 8px;
+  }
+
+  .payment-method img {
+    height: 68px;
+  }
+
+  .payment-send-money a {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .payment-method img {
+    transition: none;
+  }
 }
 
 .customer-footer {
@@ -3455,7 +3522,7 @@ select:focus-visible {
 
   .stat-card {
     min-height: 132px;
-    
+
   }
 
   .stat-label {
@@ -3613,6 +3680,15 @@ select:focus-visible {
     padding: 24px 22px 18px;
   }
 
+  .customer-overview-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-mini-stats {
+    grid-template-rows: none;
+    margin-bottom: 22px;
+  }
+
   .big-balance {
     font-size: 42px;
   }
@@ -3689,13 +3765,6 @@ select:focus-visible {
     font-size: 10px;
   }
 
-  .customer-mini-stats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .customer-mini-stats>div:last-child {
-    grid-column: span 2;
-  }
 }
 
 @media (max-width: 620px) {
@@ -3862,14 +3931,6 @@ select:focus-visible {
 
   .activity-panel .data-table {
     @apply min-w-[560px];
-  }
-
-  .customer-mini-stats {
-    @apply grid-cols-2;
-  }
-
-  .customer-mini-stats>div:last-child {
-    @apply col-span-2;
   }
 
   .customer-footer {
@@ -4565,14 +4626,6 @@ select:focus-visible {
     font-size: clamp(18px, 5.5vw, 24px);
     line-height: 1.2;
     overflow-wrap: anywhere;
-  }
-
-  .customer-mini-stats {
-    @apply grid-cols-1;
-  }
-
-  .customer-mini-stats>div:last-child {
-    @apply col-span-1;
   }
 
   .hero-actions {

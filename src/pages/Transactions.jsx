@@ -45,11 +45,11 @@ export default function Transactions() {
         </div>
       </div>
       <div className="transaction-summary">
-        <div className="transaction-summary-card"><span className="summary-icon summary-green"><BangladeshiTaka /></span><span><small>Total payments recorded</small><strong>৳{collected.toLocaleString('en-BD')}</strong></span></div>
-        <div className="transaction-summary-card"><span className="summary-icon summary-red"><BangladeshiTaka /></span><span><small>Total dues recorded</small><strong>৳{dues.toLocaleString('en-BD')}</strong></span></div>
+        <div className="transaction-summary-card bg-[#DCE8F9]"><span className="summary-icon summary-green"><BangladeshiTaka /></span><span><h3>Total payments recorded</h3><strong>৳{collected.toLocaleString('en-BD')}</strong></span></div>
+        <div className="transaction-summary-card bg-[#F5E6FC]"><span className="summary-icon summary-red"><BangladeshiTaka /></span><span><h3>Total dues recorded</h3><strong>৳{dues.toLocaleString('en-BD')}</strong></span></div>
       </div>
       <section className="panel activity-panel all-transactions">
-        <div className="directory-toolbar transactions-toolbar"><div><h2>All transactions <span className="count-badge">{transactions.length}</span></h2><p>Newest activity appears first.</p></div><label className="search-control"><Search size={16} /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search activity..." aria-label="Search transactions" /></label></div>
+        <div className="directory-toolbar transactions-toolbar"><div><h2>All transactions <span className="count-badge">{transactions.length}</span></h2><p>Newest activity appears first.</p></div><label className="search-control"><Search size={16} /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search activity..." /></label></div>
         <TransactionTable transactions={transactions} />
       </section>
     </>

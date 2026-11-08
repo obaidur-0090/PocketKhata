@@ -1,12 +1,16 @@
 import { useCallback, useMemo, useState, useSyncExternalStore } from 'react'
 import { useNavigate } from 'react-router'
-import { BangladeshiTaka, BangladeshiTakaIcon, CircleHelp, LogOut } from 'lucide-react'
+import { BangladeshiTaka, BangladeshiTakaIcon, CalendarDays, CircleHelp, LogOut} from 'lucide-react'
 import { toast } from 'react-toastify'
 import { useAuth } from '../auth/useAuth'
 import LogoutConfirmation from '../components/LogoutConfirmation'
 import PageTitle from '../components/PageTitle'
 import { getCustomers, getShopName, subscribeCustomers, subscribeShopName } from '../data/store'
 import PocketKhata from '../assets/PocketKhata.png'
+import Sslcommerz from '../assets/Sslcommerz.png'
+import Bkash from '../assets/bkash.png'
+import Nogod from '../assets/Nogod.png'
+import Rocket from '../assets/Rocket.png'
 import { TypeAnimation } from 'react-type-animation'
 
 
@@ -16,11 +20,12 @@ const subscribeShop = (notify) => subscribeShopName(notify)
 const getShopSnapshot = () => getShopName()
 const balanceMoney = (value) => value < 0 ? `+৳${Math.abs(value).toLocaleString('en-BD')}` : `৳${value.toLocaleString('en-BD')}`
 const paymentMethods = [
-  { name: 'bKash', detail: 'Send Money', tone: 'bkash', logo: 'b' },
-  { name: 'Nagad', detail: 'Send Money', tone: 'nagad', logo: 'n' },
-  { name: 'Rocket', detail: 'Send Money', tone: 'rocket', logo: 'r' },
-  { name: 'DBBL Bank', detail: 'Bank transfer', tone: 'dbbl', logo: 'd' },
+  { name: 'SSLCOMMERZ', image: Sslcommerz },
+  { name: 'bKash', image: Bkash },
+  { name: 'Nagad', image: Nogod },
+  { name: 'Rocket', image: Rocket },
 ]
+
 
 export default function CustomerPortal() {
   const customers = useSyncExternalStore(subscribe, getSnapshot, getSnapshot)
@@ -67,7 +72,9 @@ export default function CustomerPortal() {
       </a>
 
 
-        <div className="customer-header-right"><span className="secure-label"> Private customer view</span><button className="button button-subtle customer-logout" onClick={() => setLogoutOpen(true)}><LogOut size={15} /> Sign out</button></div></header>
+        <div className="customer-header-right"><span className="secure-label"> Private customer view</span><button className="button button-subtle customer-logout" onClick={() => setLogoutOpen(true)}><LogOut size={15} /> Sign out</button></div>
+
+        </header>
       <main className="customer-content">
         <section className="customer-welcome">
           <div><h1
@@ -92,35 +99,60 @@ export default function CustomerPortal() {
 
         </section>
 
+        <div className="customer-overview-layout">
+          <section className={`customer-balance-card ${customer.balance < 0 ? 'customer-credit-card' : ''}`}>
+            <div className="balance-card-top">
+              <div className="balance-card-copy">
+                <span className="balance-card-eyebrow">ACCOUNT BALANCE</span>
+                <span className="balance-card-label">{customer.balance < 0 ? 'আপনি দোকান থেকে পাবেন' : 'বকেয়া টাকার পরিমাণ'}</span>
+                <div className="big-balance">{balanceMoney(customer.balance)}</div>
+              </div>
+              <span className="balance-card-icon"><BangladeshiTaka size={26} strokeWidth={1.8} /></span>
+            </div>
+            <div className="balance-card-bottom">
+              <span><CalendarDays size={18} /> Updated {new Date().toLocaleDateString('en', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+            </div>
+          </section>
 
-        <section className={`customer-balance-card ${customer.balance < 0 ? 'customer-credit-card' : ''}`}>
-          <div className="balance-card-top"><div><span className="balance-card-label">{customer.balance < 0 ? 'আপনি দোকান থেকে পাবেন' : 'বকেয়া টাকার পরিমাণ'}</span><div className="big-balance">{balanceMoney(customer.balance)}</div></div><span className="balance-card-icon"></span></div><div className="balance-card-bottom"><span>Updated {new Date().toLocaleDateString('en', { day: 'numeric', month: 'short', year: 'numeric' })}</span></div>
+          <section className="customer-mini-stats">
+            <div className="mini-stat-card mini-stat-due bg-[#DCE8F9]"><span className="mini-stat-icon"><BangladeshiTaka size={19} /></span><span>Total purchases<strong>৳{totalPurchases.toLocaleString('en-BD')}</strong></span>
+            </div>
 
-        </section>
+            <div className="mini-stat-card mini-stat-paid bg-[#FFF8D6]"><span className="mini-stat-icon mini-stat-green"><BangladeshiTakaIcon size={19} /></span><span>Total payments<strong>৳{totalPaid.toLocaleString('en-BD')}</strong></span>
+            </div>
 
-
-        <section className="customer-mini-stats">
-          <div className='bg-[#E4F9EC]'><span className="mini-stat-icon"><BangladeshiTaka size={19} /></span><span>Total Due<strong>৳{totalPurchases.toLocaleString('en-BD')}</strong></span>
-          </div>
-
-          <div className='bg-[#DCE8F9]'><span className="mini-stat-icon mini-stat-green"><BangladeshiTakaIcon size={19} /></span><span>Total payments<strong>৳{totalPaid.toLocaleString('en-BD')}</strong></span>
-          </div>
-
-          <div className='bg-[#F5E6FC]' ><span className="mini-stat-icon mini-stat-blue"><BangladeshiTaka size={19} /></span><span>Transactions<strong>{String(customer.history.length).padStart(2, '0')}</strong></span>
-          </div>
-
-        </section>
-        <div className="customer-dashboard-grid"><section className="panel customer-ledger"><div className="panel-heading"><div>
-          <span className="font-bold">ACCOUNT HISTORY</span><h2>Your transactions</h2></div>
+            <div className="mini-stat-card mini-stat-transactions bg-[#F5E6FC]"><span className="mini-stat-icon mini-stat-blue"><BangladeshiTaka size={19} /></span><span>Transactions<strong>{String(customer.history.length).padStart(2, '0')}</strong></span>
+            </div>
+          </section>
         </div>
-          {transactions.length ? <div className="ledger-list">{transactions.map((item) => <div className="ledger-item" key={item.id}><span className={`ledger-icon ${item.type === 'Payment' ? 'ledger-paid' : 'ledger-due'}`}>{item.type === 'Payment' ? <BangladeshiTaka size={19} /> : <BangladeshiTaka size={19} />}</span><span className="ledger-description"><strong>{item.type === 'Payment' ? 'Payment received' : 'Purchase on credit'}</strong><small>{new Date(`${item.date}T00:00:00`).toLocaleDateString('en', { day: 'numeric', month: 'long', year: 'numeric' })}</small></span><strong className={`ledger-amount ${item.type === 'Payment' ? 'ledger-amount-paid' : ''}`}>{item.type === 'Payment' ? '−' : '+'} ৳{item.amount.toLocaleString('en-BD')}</strong></div>)}</div> : <div className="empty-state">No transactions recorded yet.</div>}
+        <div className="customer-dashboard-grid mt-5">
+          <section className="panel customer-ledger"><div className="panel-heading"><div>
+            <span className="font-bold">ACCOUNT HISTORY</span><h2>Your transactions</h2></div>
+          </div>
+            {transactions.length ? <div className="ledger-list">{transactions.map((item) => <div className="ledger-item" key={item.id}><span className={`ledger-icon ${item.type === 'Payment' ? 'ledger-paid' : 'ledger-due'}`}>{item.type === 'Payment' ? <BangladeshiTaka size={19} /> : <BangladeshiTaka size={19} />}</span><span className="ledger-description"><strong>{item.type === 'Payment' ? 'Payment received' : 'Purchase on credit'}</strong><small>{new Date(`${item.date}T00:00:00`).toLocaleDateString('en', { day: 'numeric', month: 'long', year: 'numeric' })}</small></span><strong className={`ledger-amount ${item.type === 'Payment' ? 'ledger-amount-paid' : ''}`}>{item.type === 'Payment' ? '−' : '+'} ৳{item.amount.toLocaleString('en-BD')}</strong></div>)}</div> : <div className="empty-state">No transactions recorded yet.</div>}
 
 
-        </section><section className="panel payment-panel">
+          </section><section className="panel payment-panel">
             <div className="panel-heading">
               <div><h2>Payment options</h2></div>
             </div>
-            <div className="payment-methods">{paymentMethods.map((method) => <button className="payment-method" key={method.name} onClick={() => toast.info(`Please ask your shop for their ${method.name} payment number.`)}><span className={`payment-logo ${method.tone}`}>{method.logo}</span><span><strong>{method.name}</strong><small>{method.detail}</small></span></button>)}</div><div className="payment-note"><CircleHelp size={15} /><span>After payment, share your transaction ID with the shop so they can update your balance.</span></div></section></div>
+            <div className="payment-methods">
+              {paymentMethods.map((method) => (
+                <button
+                  className="payment-method"
+                  key={method.name}
+                  type="button"
+                  onClick={() => toast.info('This feature is not available')}
+                >
+                  <img src={method.image} alt={method.name} />
+                </button>
+              ))}
+            </div>
+            <div className="payment-send-money">
+              <strong>Send Money</strong>
+              <a href="tel:+8801790700599">+880 1790-700599</a>
+            </div>
+          </section></div>
       </main>
       {logoutOpen && <LogoutConfirmation onCancel={() => setLogoutOpen(false)} onConfirm={handleLogout} busy={loggingOut} />}
     </div>

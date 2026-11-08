@@ -95,14 +95,14 @@ export default function AdminLayout() {
           </button>
         </div>
       </aside>
-      {menuOpen && <button aria-label="Close navigation" className="mobile-backdrop" onClick={() => setMenuOpen(false)} />}
+      {menuOpen && <button className="mobile-backdrop" onClick={() => setMenuOpen(false)} />}
       <main className="main-area">
         <header className="topbar">
-          <button aria-label="Open menu" className="icon-button mobile-menu" onClick={() => setMenuOpen((open) => !open)}><Menu size={20} /></button>
+          <button className="icon-button mobile-menu" onClick={() => setMenuOpen((open) => !open)}><Menu size={20} /></button>
           <div><strong>{currentPage}</strong></div>
           <div className="topbar-actions">
             <span className="today-label">{new Date().toLocaleDateString('en', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}</span>
-            {session?.role === 'admin' && <button type="button" className="button button-subtle backup-button" onClick={downloadUserData} aria-label="Download userData.json backup" title="Download userData.json"><Download size={15} /><span>Backup data</span></button>}
+            {session?.role === 'admin' && <button type="button" className="button button-subtle backup-button" onClick={downloadUserData} title="Download userData.json"><Download size={15} /><span>Backup data</span></button>}
             
           </div>
         </header>
