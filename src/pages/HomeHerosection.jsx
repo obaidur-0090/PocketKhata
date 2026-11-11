@@ -11,12 +11,13 @@ import { useEffect } from 'react'
 const HomeHerosection = () => {
 
     useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100,
-        })
-    }, [])
+    AOS.init({
+        duration: 1000,
+        once: false,
+        mirror: true,
+        offset: 100,
+    })
+}, [])
 
     return (
         <div>

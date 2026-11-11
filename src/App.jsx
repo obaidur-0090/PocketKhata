@@ -12,6 +12,7 @@ import NotFound from './pages/NotFound'
 import ProfileSettings from './pages/ProfileSettings'
 import Transactions from './pages/Transactions'
 import User from './pages/User'
+import OffService from './pages/OffService';
 
 export default function App() {
   return (
@@ -19,8 +20,14 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/customer/login" element={<CustomerLogin />} />
+
+
+          <Route path="/offservice" element={<OffService />} />
+          <Route path="/offservice" element={<OffService/>} />
+
+          
+          {/* <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/customer/login" element={<CustomerLogin />} /> */}
           <Route element={<ProtectedRoute role="admin" />}>
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />

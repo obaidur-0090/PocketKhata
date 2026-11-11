@@ -23,8 +23,12 @@ export default function Navber() {
       </nav>
 
       <div className="landing-nav-actions">
-        <Link to="/customer/login" className="nav-customer">Customer login</Link>
-        <Link to="/admin/login" className="button button-primary landing-login">Admin login</Link>
+        {/* <Link to="/customer/login" className="nav-customer">Customer login</Link>
+        <Link to="/admin/login" className="button button-primary landing-login">Admin login</Link> */}
+
+        <Link to="offservice" className="nav-customer">Customer login</Link>
+        <Link to="/offservice" className="button button-primary landing-login">Admin login</Link>
+        
       </div>
 
       <div className="landing-mobile-menu">
