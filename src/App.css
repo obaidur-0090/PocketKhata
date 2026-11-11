@@ -1,4 +1,11 @@
 @reference "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap');
+
+
+.noto-sans-bengali {
+  font-family: "Noto Sans Bengali", sans-serif;
+  font-optical-sizing: auto;
+}
 
 :root {
   font-family: Inter, "Segoe UI", Arial, sans-serif;
@@ -27,7 +34,6 @@ body {
 }
 
 img {
-  display: block;
   max-width: 100%;
 }
 
@@ -176,7 +182,7 @@ select:focus-visible {
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: 88px var(--landing-gutter) 0;
+  padding: 70px var(--landing-gutter) 0;
   background: white;
 }
 
@@ -186,7 +192,7 @@ select:focus-visible {
   right: 0;
   left: 0;
   z-index: 50;
-  height: 88px;
+  height: 70px;
   display: flex;
   align-items: center;
   padding: 0 7.1%;
@@ -205,7 +211,7 @@ select:focus-visible {
   gap: 34px;
   margin-left: auto;
   color: #77736e;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 550;
   flex-wrap: wrap;
 }
@@ -3741,7 +3747,7 @@ select:focus-visible {
   }
 
   .nav-customer {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .landing-login {

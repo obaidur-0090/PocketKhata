@@ -16,9 +16,10 @@ export default function Navber() {
         <span className='text-2xl'>Pocket<span className="brand-accent">KhaTa</span></span>
       </Link>
 
-      <nav className="landing-nav-links">
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How it works</a>
+      <nav className="landing-nav-links">  
+        <Link to="/features" >Features</Link>
+        <Link to="/how-it-works">How it works</Link>
+      
       </nav>
 
       <div className="landing-nav-actions">
