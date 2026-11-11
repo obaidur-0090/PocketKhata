@@ -35,7 +35,7 @@ const HomeHerosection = () => {
 
                 <div className='flex flex-col items-center justify-center text-center gap-10'>
 
-                    <video className='mt-10 w-[60%]' src={video} poster={thumbnail} controls playsInline
+                    <video className='mt-10  w-[90%] md:w-[60%]' src={video} poster={thumbnail} controls playsInline
                         preload="metadata" data-aos="zoom-in" />
 
                     <p className='noto-sans-bengali md:text-2xl text-center'
