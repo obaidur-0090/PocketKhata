@@ -16,10 +16,10 @@ export default function Navber() {
         <span className='text-2xl'>Pocket<span className="brand-accent">KhaTa</span></span>
       </Link>
 
-      <nav className="landing-nav-links">  
+      <nav className="landing-nav-links">
         <Link to="/features" >Features</Link>
         <Link to="/how-it-works">How it works</Link>
-      
+
       </nav>
 
       <div className="landing-nav-actions">
@@ -28,7 +28,7 @@ export default function Navber() {
 
         <Link to="offservice" className="nav-customer">Customer login</Link>
         <Link to="/offservice" className="button button-primary landing-login">Admin login</Link>
-        
+
       </div>
 
       <div className="landing-mobile-menu">
@@ -48,8 +48,8 @@ export default function Navber() {
             id="mobile-navigation"
             className="landing-mobile-dropdown"
           >
-            <a href="#features" onClick={closeMenu}>Features</a>
-            <a href="#how-it-works" onClick={closeMenu}>How it works</a>
+            <Link to="/features" >Features</Link>
+            <Link to="/how-it-works">How it works</Link>
             <div className="landing-mobile-divider" />
             <Link to="/customer/login" onClick={closeMenu}>Customer login</Link>
             <Link to="/admin/login" onClick={closeMenu}>Admin login</Link>

@@ -9,6 +9,7 @@ import customer from '../assets/customer.jpg'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
+import { BriefcaseMedical } from 'lucide-react';
 
 const HomeHerosection = () => {
 
@@ -120,6 +121,54 @@ const HomeHerosection = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Payment method 
+            মোবাইল ব্যাংকিং অ্যাপ থেকে পেমেন্ট গ্রহণ করুন */}
+
+            <section>
+                <div className=" md:mt-15 flex items-center justify-center px-5 py-12 rounded-xl transition-all duration-300 md:hover:shadow-[0_8px_30px_#e8898180]">
+
+                    <div className="max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-20 items-center">
+
+                        {/* img div  */}
+                        <div className="w-full" data-aos="fade-right">
+                            <img src={paymentMethod} alt="business" className="w-full h-auto object-cover border-8 border-red-700" />
+                        </div>
+
+                        {/* text div  */}
+                        <div className="w-full" data-aos="fade-left">
+
+                            <div className="text-3xl md:text-4xl font-bold text-black mb-4">
+                                মোবাইল ব্যাংকিং অ্যাপ থেকে পেমেন্ট গ্রহণ করুন
+                            </div>
+
+                            <div className="text-lg md:text-xl leading-relaxed text-gray-800 mb-7">
+                                মোবাইল ব্যাংকিং অ্যাপের মাধ্যমে সহজেই পেমেন্ট গ্রহণ করুন। গ্রাহক পেমেন্ট করলেই মুহূর্তের মধ্যে টাকা জমা হবে আপনার অ্যাকাউন্টে।
+                            </div>
+
+                            <div className="space-y-1 text-lg md:text-xl text-gray-900 mb-9">
+                                <div>• ঘরে বসেই নিজের ফোন থেকে পেমেন্ট করুন।</div>
+                                <div>• ঘরে বসেই আপনার হিসাব দেখে পেমেন্ট করুন।</div>
+                                <div>• ঘরে বসেই মোবাইল ব্যাংকিংয়ের মাধ্যমে পেমেন্ট করুন।</div>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            {/* সব ধরনের দোকান ও ক্ষুদ্র ব্যবসার হিসাব-নিকাশ এখন পকেটখাতায় */}
+            <section>
+                <div className="mt-10 ">
+                    <h1 className='text-black text-2xl md:text-5xl text-center ' data-aos="fade-up" > সব ধরনের দোকান ও ক্ষুদ্র ব্যবসার হিসাব-নিকাশ এখন পকেটখাতায়</h1>
+                    <div>
+                        <div className='border-2 hover:bg w-1/4 '><BriefcaseMedical /></div>
+                    </div>
+                </div>
+                
+            </section>
+
 
 
 

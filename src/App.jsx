@@ -19,7 +19,7 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home /> } />
 
 
           <Route path="/offservice" element={<OffService />} />

@@ -775,9 +775,10 @@ select:focus-visible {
   gap: 16px;
   margin-inline: calc(0px - var(--landing-bleed));
   padding: 7px var(--landing-gutter);
-  border-top: 1px solid #f1afaf;
-  color: #99948e;
-  font-size: 13px;
+  /* border-top: 1px solid #f1afaf; */
+  background: #d5473e;
+  color: white;
+  font-size: 15px;
 }
 
 .landing-footer .brand-lockup {
