@@ -22,12 +22,12 @@ export default function App() {
           <Route path="/" element={<Home /> } />
 
 
-          <Route path="/offservice" element={<OffService />} />
-          <Route path="/offservice" element={<OffService/>} />
+          {/* <Route path="/offservice" element={<OffService />} />
+          <Route path="/offservice" element={<OffService/>} /> */}
 
           
-          {/* <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/customer/login" element={<CustomerLogin />} /> */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/customer/login" element={<CustomerLogin />} />
           <Route element={<ProtectedRoute role="admin" />}>
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />

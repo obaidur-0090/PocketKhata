@@ -9,7 +9,7 @@ import customer from '../assets/customer.jpg'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
-import { BriefcaseMedical } from 'lucide-react';
+import { Grid2X2, Shirt, Store, Pill, Utensils, Coffee, ShoppingCart, SprayCan, } from 'lucide-react'
 
 const HomeHerosection = () => {
 
@@ -150,7 +150,7 @@ const HomeHerosection = () => {
                                 <div>• ঘরে বসেই নিজের ফোন থেকে পেমেন্ট করুন।</div>
                                 <div>• ঘরে বসেই আপনার হিসাব দেখে পেমেন্ট করুন।</div>
                                 <div>• ঘরে বসেই মোবাইল ব্যাংকিংয়ের মাধ্যমে পেমেন্ট করুন।</div>
-                                
+
                             </div>
                         </div>
 
@@ -160,15 +160,100 @@ const HomeHerosection = () => {
 
             {/* সব ধরনের দোকান ও ক্ষুদ্র ব্যবসার হিসাব-নিকাশ এখন পকেটখাতায় */}
             <section>
-                <div className="mt-10 ">
-                    <h1 className='text-black text-2xl md:text-5xl text-center ' data-aos="fade-up" > সব ধরনের দোকান ও ক্ষুদ্র ব্যবসার হিসাব-নিকাশ এখন পকেটখাতায়</h1>
-                    <div>
-                        <div className='border-2 hover:bg w-1/4 '><BriefcaseMedical /></div>
+                <div className="mt-10 px-4 md:px-10">
+
+                    <h1
+                        className="text-black text-2xl md:text-5xl text-center "
+                        data-aos="fade-up">
+                        সব ধরনের দোকান ও ক্ষুদ্র ব্যবসার হিসাব-নিকাশ এখন পকেটখাতায়
+                    </h1>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-10 mt-12 max-w-7xl mx-auto">
+
+                        {/* General Store */}
+                        <div className="group border border-gray-300 rounded-sm flex flex-col items-center justify-center py-10 px-4 gap-6 transition-all duration-500 md:hover:border-red-500 md:hover:shadow-[0_8px_30px_#e8898180] md:hover:scale-105" data-aos="fade-right">
+                            <Store className="w-20 h-20 text-red-600 stroke-[1.2] transition-transform duration-500 md:group-hover:scale-110" />
+
+                            <h2 className="text-lg md:text-xl text-black text-center">
+                                জেনারেল স্টোর
+                            </h2>
+                        </div>
+
+                        {/* Pharmacy */}
+                        <div className="group border border-gray-300 rounded-sm flex flex-col items-center justify-center py-10 px-4 gap-6 transition-all duration-500 md:hover:border-red-500 md:hover:shadow-[0_8px_30px_#e8898180] md:hover:scale-105" data-aos="fade-right">
+                            <Pill className="w-20 h-20 text-red-600 stroke-[1.2] transition-transform duration-500 md:group-hover:scale-110" />
+
+                            <h2 className="text-lg md:text-xl text-black text-center">
+                                ফার্মেসি
+                            </h2>
+                        </div>
+
+                        {/* Restaurant */}
+                        <div className="group border border-gray-300 rounded-sm flex flex-col items-center justify-center py-10 px-4 gap-6 transition-all duration-500 md:hover:border-red-500 md:hover:shadow-[0_8px_30px_#e8898180] md:hover:scale-105" data-aos="fade-left">
+                            <Utensils className="w-20 h-20 text-red-600 stroke-[1.2] transition-transform duration-500 md:group-hover:scale-110" />
+
+                            <h2 className="text-lg md:text-xl text-black text-center">
+                                রেস্তোরাঁ
+                            </h2>
+                        </div>
+
+                        {/* Cafe */}
+                        <div className="group border border-gray-300 rounded-sm flex flex-col items-center justify-center py-10 px-4 gap-6 transition-all duration-500 md:hover:border-red-500 md:hover:shadow-[0_8px_30px_#e8898180] md:hover:scale-105" data-aos="fade-left">
+                            <Coffee className="w-20 h-20 text-red-600 stroke-[1.2] transition-transform duration-500 md:group-hover:scale-110" />
+
+                            <h2 className="text-lg md:text-xl text-black text-center">
+                                ক্যাফে
+                            </h2>
+                        </div>
+
+                        {/* Online Business */}
+                        <div className="group border border-gray-500 rounded-sm flex flex-col items-center justify-center py-10 px-4 gap-6 transition-all duration-300 md:hover:border-red-500 md:hover:shadow-[0_8px_30px_#e8898180] md:hover:scale-105" data-aos="fade-right">
+                            <ShoppingCart className="w-20 h-20 text-red-600 stroke-[1.2] transition-transform duration-500 md:group-hover:scale-110" />
+
+                            <h2 className="text-lg md:text-xl text-black text-center">
+                                অনলাইন ব্যবসা
+                            </h2>
+                        </div>
+
+                        {/* Super Shop */}
+                        <div className="group border border-gray-300 rounded-sm flex flex-col items-center justify-center py-10 px-4 gap-6 transition-all duration-500 md:hover:border-red-500 md:hover:shadow-[0_8px_30px_#e8898180] md:hover:scale-105" data-aos="fade-right">
+                            <SprayCan className="w-20 h-20 text-red-600 stroke-[1.2] transition-transform duration-500 md:group-hover:scale-110" />
+
+                            <h2 className="text-lg md:text-xl text-black text-center">
+                                সুপার শপ
+                            </h2>
+                        </div>
+
+                        {/* Fashion */}
+                        <div className="group border border-gray-300 rounded-sm flex flex-col items-center justify-center py-10 px-4 gap-6 transition-all duration-500 md:hover:border-red-500 md:hover:shadow-[0_8px_30px_#e8898180] md:hover:scale-105" data-aos="fade-left">
+                            <Shirt className="w-20 h-20 text-red-600 stroke-[1.2] transition-transform duration-500 md:group-hover:scale-110" />
+
+                            <h2 className="text-lg md:text-xl text-black text-center">
+                                ফ্যাশন
+                            </h2>
+                        </div>
+
+                        {/* Others */}
+                        <div className="group border border-gray-300 rounded-sm flex flex-col items-center justify-center py-10 px-4 gap-6 transition-all duration-500 md:hover:border-red-500 md:hover:shadow-[0_8px_30px_#e8898180] md:hover:scale-105" data-aos="fade-left">
+                            <Grid2X2 className="w-20 h-20 text-red-600 stroke-[1.2] transition-transform duration-500 md:group-hover:scale-110" />
+
+                            <h2 className="text-lg md:text-xl text-black text-center">
+                                অন্যান্য
+                            </h2>
+                        </div>
+
                     </div>
                 </div>
-                
             </section>
 
+            {/* সব ধরনের দোকান ও ক্ষুদ্র ব্যবসার হিসাব-নিকাশ এখন পকেটখাতায় */}
+            <section className='mt-8 md:mt-15 mb-15 '>
+                <h1
+                    className="text-black text-2xl md:text-5xl text-center "
+                    data-aos="fade-up">
+                    সব ধরনের দোকান ও ক্ষুদ্র ব্যবসার হিসাব-নিকাশ এখন পকেটখাতায়
+                </h1>
+            </section>
 
 
 
