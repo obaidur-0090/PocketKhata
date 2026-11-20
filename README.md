@@ -2,8 +2,8 @@
 
 A responsive digital ledger for small businesses, built with React, Vite, Tailwind CSS, DaisyUI, React Router, Recharts, and Firebase Authentication.
 
-## Demo
-    upcomming...
+## Demo (firebase)
+[Demo](https://pocketkhata2.web.app/)
 ## Run locally
 
 ```sh
